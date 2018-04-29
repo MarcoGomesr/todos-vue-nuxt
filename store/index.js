@@ -15,6 +15,14 @@ export const mutations = {
 
     remove(state, todo){
         state.todos = state.todos.filter( t => t.id != todo.id)
+    },
+
+    toggle(state, todo){
+        state.todos = state.todos.map(t =>
+            t.id === todo.id
+            ? todo
+            : t
+        )
     }
 }
 
@@ -29,5 +37,11 @@ export const actions = {
         const res = await axios.delete(`http://localhost:3777/todos/${todo.id}`)
 
         commit('remove', todo)
+    },
+
+    async toggle({commit}, todo){
+        const res = await axios.patch(`http://localhost:3777/todos/${todo.id}`, {done: !todo.done})
+
+        commit('toggle', res.data)
     }
 }
