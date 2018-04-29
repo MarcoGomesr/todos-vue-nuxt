@@ -1,6 +1,6 @@
 <template>
   <div class="pa4">
-    
+
     <article class="pa3 pa5-ns">
       <h1 class="f4 bold center mw6">Cats</h1>
       <ul class="list pl0 ml0 center mw6 ba b--light-silver br2">
@@ -16,14 +16,17 @@ import {mapState, mapMutations} from 'vuex'
 import { init } from './shared'
 
 export default {
-  fetch: init,
+
+ fetch: init, 
 
   computed:{
     ...mapState({
       todos: state => state.todos
     })
-  }
+  },
 
+  methods:{
+  }
 }
 
 
